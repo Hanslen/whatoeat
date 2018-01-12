@@ -1,11 +1,18 @@
-import React from 'react';
+import React, {Component} from 'react';
 import classes from './Card.css';
-const Card = (props) => {
-    return(
-        <div className={classes.ChoiceCard}>
-
-        </div>
-    );
+class Card extends Component {
+    render(){
+        let card = null;
+        switch(this.props.type){
+            case('Staple Food'):
+            card = <div className>
+        }
+        return(
+            <div className={classes.ChoiceCard}>
+                {this.props.children}
+            </div>
+        );
+    }
 };
 
 export default Card;
