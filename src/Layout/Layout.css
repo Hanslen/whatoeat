@@ -5,12 +5,15 @@
     background-color: #e1e4b8;
     width: 100%;
     height:80px;
+    color: #beba83;
 }
 p{
-    color: #beba83;
     font-size: 1.5em;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
     text-align: center;
+}
+body{
+    background-color: #e1e4b8;
 }
