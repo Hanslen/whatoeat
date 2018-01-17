@@ -1,0 +1,13 @@
+.Feedback{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.Feedback textarea{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.Feedback button{
+    width: 80%;
+    margin-left: 10%;
+}

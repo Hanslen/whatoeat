@@ -6,7 +6,6 @@ const Choices = (props) =>{
             return <Card key={choice} type={choice}>choice</Card>
         });
     });
-    console.log(transformedCard);
     return(
         <div>
             {transformedCard}

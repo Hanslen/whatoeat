@@ -2,6 +2,10 @@
     width: 100%;
     height: 100%;
 }
+.ChoiceCard a{
+    color: white;
+    text-decoration: none;
+}
 .CardP{
     line-height: 120px;
     font-size: 1.7em;

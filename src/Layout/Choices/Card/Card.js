@@ -4,6 +4,7 @@ import foodIcon from '../../../img/food.png';
 import fruitIcon from '../../../img/fruit.png';
 import drinkIcon from '../../../img/drink.png';
 import snackIcon from '../../../img/snack.png';
+import {Link} from 'react-router-dom';
 class Card extends Component {
     guessHandler = () => {
         console.log("I am guessing");
@@ -67,8 +68,18 @@ class Card extends Component {
                         </div>
                     </div>
                     <div id={this.props.type} style={detailedBox}>
-                        <button type="button" className="btn btn-outline-light" onClick={this.guessHandler}>让派派猜猜:D</button> 
-                        <button type="button" className="btn btn-outline-light" onClick={this.randomHandler} style={cardButton} style={{position:'absolute', right:10}}>让派派随机:D</button>
+                        <button 
+                            type="button" 
+                            className="btn btn-outline-light">
+                            <Link to="/guess">让派派猜猜:D</Link>
+                        </button> 
+                        <button 
+                            type="button" 
+                            className="btn btn-outline-light"
+                            style={cardButton} 
+                            style={{position:'absolute', right:10}}>
+                            <Link to="/random">让派派随机:D</Link>
+                        </button>
                     </div>
                 </div>
             </div>
