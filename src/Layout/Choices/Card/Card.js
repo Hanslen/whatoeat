@@ -18,26 +18,31 @@ class Card extends Component {
         let cardIcon = null;
         let cardButton = {position: 'fixed', right:'20'};
         let cardTitle = null;
+        let passTitle = null;
         switch(this.props.type){
             case('Staple Food'):
                 cardColor = {backgroundColor: '#e4c561',color:"#c98c47"};
                 cardIcon = foodIcon;
                 cardTitle = '主食';
+                passTitle = 'food';
                 break;
             case('Fruit'):
                 cardColor = {backgroundColor:'#dc7254', color: "#9b3731"};
                 cardIcon = fruitIcon;
                 cardTitle = '水果';
+                passTitle = 'fruit';
                 break;
             case('Drink'):
                 cardColor = {backgroundColor:'#98394f', color: "#611533"};
                 cardIcon = drinkIcon;
                 cardTitle = '饮料';
+                passTitle = 'drink';
                 break;
             case('Snack'):
                 cardColor = {backgroundColor:'#4f2f55', color: "#251334"};
                 cardIcon = snackIcon;
                 cardTitle = '零食';
+                passTitle = 'snack';
                 break;
             default:
                 cardColor = {backgroundColor:'#000000'};
@@ -50,7 +55,6 @@ class Card extends Component {
                 document.getElementById('Drink').style.display = "none";
                 document.getElementById('Snack').style.display = "none";
                 document.getElementById(this.props.type).style.display = "block";
-                
             }
             else{
                 document.getElementById(this.props.type).style.display = "none";
@@ -78,7 +82,11 @@ class Card extends Component {
                             className="btn btn-outline-light"
                             style={cardButton} 
                             style={{position:'absolute', right:10}}>
-                            <Link to="/random">让派派随机:D</Link>
+                            <Link to={{
+                                pathname: '/random',
+                                // hash: "#id",
+                                search: "?choice="+passTitle
+                            }}>让派派随机:D</Link>
                         </button>
                     </div>
                 </div>

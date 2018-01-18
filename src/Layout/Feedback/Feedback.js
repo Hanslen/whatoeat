@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './Feedback.css';
-import axios from 'axios';
+import axios from '../../axios';
 class feedback extends Component{
     state = {
         feedback: ''
@@ -9,7 +9,7 @@ class feedback extends Component{
         const data = {
             Msg: this.state.feedback
         };
-        axios.post('https://whatoeat-46f95.firebaseio.com/msg.json',data)
+        axios.post('msg.json',data)
             .then(res => {
                 alert("派派已成功接受٩٩꒰｡•◡•｡꒱۶")
             })

@@ -3,7 +3,8 @@ import './App.css';
 import Layout from './Layout/Layout'
 import Choices from './Layout/Choices/Choices';
 import Feedback from './Layout/Feedback/Feedback';
-import {BrowserRouter} from 'react-router-dom';
+import {BrowserRouter, Route, Link} from 'react-router-dom';
+import Random from './Layout/Random/Random';
 class App extends Component {
   state = {
     choices:["Staple Food", "Fruit", "Drink", "Snack"]
@@ -12,8 +13,11 @@ class App extends Component {
     return (
         <BrowserRouter>
           <Layout>
-            <Choices choices={this.state.choices}/>
-            <Feedback />
+            <Route path="/" exact
+              render={() => (<Choices choices={this.state.choices}/>)}/>
+            <Route path="/" exact render={() => (<Feedback />)}/>
+            <Route path="/random"
+              component={Random}/>
           </Layout>
         </BrowserRouter>
     );
@@ -21,3 +25,4 @@ class App extends Component {
 }
 
 export default App;
+
