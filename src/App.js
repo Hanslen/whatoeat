@@ -5,6 +5,7 @@ import Choices from './Layout/Choices/Choices';
 import Feedback from './Layout/Feedback/Feedback';
 import {BrowserRouter, Route, Link} from 'react-router-dom';
 import Random from './Layout/Random/Random';
+import Guess from './Layout/Guess/Guess';
 class App extends Component {
   state = {
     choices:["Staple Food", "Fruit", "Drink", "Snack"]
@@ -18,6 +19,8 @@ class App extends Component {
             <Route path="/" exact render={() => (<Feedback />)}/>
             <Route path="/random"
               component={Random}/>
+            <Route path="/guess" exact
+              component={Guess}/>
           </Layout>
         </BrowserRouter>
     );
