@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import classes from './Guess.css';
+import axios from '../../axios';
 
 class guess extends Component{
     render(){

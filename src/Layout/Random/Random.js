@@ -10,17 +10,17 @@ class random extends Component{
         selecting: true,
         choice: null,
         foodFre: null,
-        foodSkip: null
+        foodSkip: null,
+        params: queryString.parse(this.props.location.search)
     };
     componentWillMount(){
-        let params = queryString.parse(this.props.location.search);
-        axios.get(params.choice+'.json')
+        axios.get('/n'+this.state.params.choice+'.json')
             .then(res => {
                 this.setState({choices: res.data});
                 this.generateChoiceHanlder();
                 setTimeout(() => {
                     this.setState({selecting: false});
-                }, 0);
+                }, 1000);
             })
             .catch(err => {
                 alert("数据库好像还没有这个选项0.0");
@@ -32,7 +32,7 @@ class random extends Component{
     generateChoiceHanlder = () => {
         let rand = Math.floor(Math.random()*Object.keys(this.state.choices).length);
         Object.keys(this.state.choices).map((ch,i) => {
-            if(rand == i){
+            if(rand === i){
                 this.setState({choice: ch});
                 return ch;
             }
@@ -45,7 +45,7 @@ class random extends Component{
             let tmpData = this.state.foodFre;
             tmpData[this.state.choice] += 1;
             this.setState({foodFre: tmpData});
-            axios.patch('/foodFre.json', this.state.foodFre).then(res => {
+            axios.patch('/n'+this.state.params.choice+'Fre.json', this.state.foodFre).then(res => {
                 alert("成功记录！快去次饭饭吧(虎摸");
             }).catch(err => {
                 alert("网络出错了。。。。你先去吃饭吧【可以手动联系客服派...Error code是(记得截图):"+err);
@@ -53,11 +53,11 @@ class random extends Component{
         }
         else{
             console.log("Pulling from foodFre.json");
-            axios.get('/foodFre.json').then(res => {
+            axios.get('/n'+this.state.params.choice+'Fre.json').then(res => {
                 let tmpData = res.data;
                 tmpData[this.state.choice] += 1;
                 this.setState({foodFre:tmpData});
-                axios.patch('/foodFre.json', this.state.foodFre).then(res => {
+                axios.patch('/n'+this.state.params.choice+'Fre.json', this.state.foodFre).then(res => {
                     alert("成功记录！快去次饭饭吧(虎摸");
                 }).catch(err => {
                     alert("网络出错了。。。。你先去吃饭吧【可以手动联系客服派...Error code是(记得截图):"+err);
@@ -74,7 +74,7 @@ class random extends Component{
             let tmpData = this.state.foodSkip;
             tmpData[this.state.choice] += 1;
             this.setState({foodSkip: tmpData});
-            axios.patch('/foodSkip.json', this.state.foodSkip).then(res => {
+            axios.patch('/n'+this.state.params.choice+'Skip.json', this.state.foodSkip).then(res => {
                 alert("哼!Random了居然又不喜欢!只能再给你Random了QAQ");
             }).catch(err => {
                 alert("网络出错了。。。。Error code是(记得截图):"+err);
@@ -82,11 +82,11 @@ class random extends Component{
         }
         else{
             console.log("Pulling from foodSkip.json");
-            axios.get('/foodSkip.json').then(res => {
+            axios.get('/n'+this.state.params.choice+'Skip.json').then(res => {
                 let tmpData = res.data;
                 tmpData[this.state.choice] += 1;
                 this.setState({foodSkip:tmpData});
-                axios.patch('/foodSkip.json', this.state.foodSkip).then(res => {
+                axios.patch('/n'+this.state.params.choice+'Skip.json', this.state.foodSkip).then(res => {
                     alert("哼!Random了居然又不喜欢!只能再给你Random了QAQ(有可能还是Random到这个：）)");
                 }).catch(err => {
                     alert("网络出错了。。。。Error code是(记得截图):"+err);
